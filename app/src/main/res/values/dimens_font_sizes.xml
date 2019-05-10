@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_display_text_size">60sp</dimen>
+    <dimen name="header_1">26sp</dimen>
+    <dimen name="header_2">22sp</dimen>
+    <dimen name="header_3">18sp</dimen>
+    <dimen name="content_1">16sp</dimen>
+    <dimen name="content_2">14sp</dimen>
+</resources>

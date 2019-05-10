@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/layoutBackground">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_margin="10dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/app_icon"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/ic_app_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/line11"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:fontFamily="@font/cutive"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/app_name_and_version"
+                    android:textSize="@dimen/header_3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/app_icon" />
+
+                <TextView
+                    android:id="@+id/line12"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/company_email"
+                    android:textSize="@dimen/content_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line11" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:id="@+id/share_app"
+                    style="@style/selectable_detail_row">
+
+                    <com.codemonk_labs.bannerit.components.DetailView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:dvIcon="@drawable/ic_share"
+                        app:labelText1="@string/share_this_app" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/rate_the_app"
+                    style="@style/selectable_detail_row"
+                    app:layout_constraintTop_toBottomOf="@id/share_app">
+
+                    <com.codemonk_labs.bannerit.components.DetailView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:dvIcon="@drawable/ic_rate_review"
+                        app:labelText1="@string/rate_this_app" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/submit_feedback"
+                    style="@style/selectable_detail_row"
+                    app:layout_constraintTop_toBottomOf="@id/rate_the_app">
+
+                    <com.codemonk_labs.bannerit.components.DetailView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:dvIcon="@drawable/ic_feedback"
+                        app:labelText1="@string/submit_feedback" />
+                </FrameLayout>
+
+                <!--<FrameLayout-->
+                    <!--android:id="@+id/remove_ads"-->
+                    <!--style="@style/selectable_detail_row"-->
+                    <!--app:layout_constraintTop_toBottomOf="@id/submit_feedback">-->
+
+                    <!--<com.codemonk_labs.bannerit.components.DetailView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--app:dvIcon="@drawable/ic_remove_ads"-->
+                        <!--app:labelText1="@string/remove_ads" />-->
+                <!--</FrameLayout>-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="feedback_input_layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/feedback_input_layout_margin</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+    </style>
+
+    <style name="feedback_input">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?actionBarSize</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/header_3</item>
+    </style>
+
+    <style name="feedback_content_layout" parent="feedback_input_layout">
+        <item name="counterEnabled">true</item>
+        <item name="counterMaxLength">256</item>
+    </style>
+
+    <style name="feedback_content">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">top|start</item>
+        <item name="android:maxLength">256</item>
+        <item name="android:maxLines">5</item>
+        <item name="android:minLines">3</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:textSize">@dimen/header_3</item>
+    </style>
+
+</resources>

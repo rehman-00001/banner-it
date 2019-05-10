@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="editor_layout_margin_horizontal">20dp</dimen>
+    <dimen name="editor_layout_card_radius">8dp</dimen>
+    <dimen name="editor_layout_card_elevation">8dp</dimen>
+    <dimen name="editor_layout_width">10dp</dimen>
+    <dimen name="editor_padding_horizontal">10dp</dimen>
+    <dimen name="editor_clear_button">10dp</dimen>
+    <dimen name="editor_row_margin_top">8dp</dimen>
+    <dimen name="buttons_padding">10dp</dimen>
+    <dimen name="options_button_margin_horizontal">8dp</dimen>
+    <dimen name="app_progress_bar_layout_height">4dp</dimen>
+    <dimen name="app_progress_bar_height">16dp</dimen>
+    <dimen name="app_toolbar_back_button_margin_horizontal">10dp</dimen>
+    <dimen name="app_toolbar_back_button_padding">10dp</dimen>
+
+
+    <!--DETAIL_VIEW-->
+    <dimen name="detailview_height">56dp</dimen>
+    <dimen name="detailview_icon_size">24dp</dimen>
+    <dimen name="detailview_margin">18dp</dimen>
+    <dimen name="detailview_icon_horizontal_margin">20dp</dimen>
+    <dimen name="detailview_text_label1_marginBottom">2dp</dimen>
+    <dimen name="detailview_text_label2_marginTop">1dp</dimen>
+
+
+    <!--FEEDBACK_ACTIVITY-->
+    <dimen name="feedback_input_layout_margin">30dp</dimen>
+    <dimen name="feedback_content_text_limit">256</dimen>
+    <dimen name="feedback_button_margin_end">30dp</dimen>
+</resources>

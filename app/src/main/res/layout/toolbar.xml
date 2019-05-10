@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/app_bar_layout">
+
+    <androidx.appcompat.widget.Toolbar style="@style/app_toolbar">
+
+        <androidx.appcompat.widget.LinearLayoutCompat style="@style/app_toolbar_contents">
+
+            <ImageView
+                android:id="@+id/back_button"
+                style="@style/app_toolbar_back_button" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/toolbar_title"
+                style="@style/app_toolbar_title" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.Toolbar>
+</com.google.android.material.appbar.AppBarLayout>
+

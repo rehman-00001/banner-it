@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#304FFE</color>
+    <color name="colorPrimaryDark">#EB6471E9</color>
+    <color name="colorAccent">#685EC0</color>
+    <color name="colorAccentSecondary">#6457AD</color>
+    <color name="layoutBackground">#f8f8f8</color>
+    <color name="listItemBackground">#ddccff90</color>
+    <color name="contentColorPrimary">#ffffff</color>
+    <color name="contentColorSecondary">#000000</color>
+    <color name="defaultTextColor">#1100FF</color>
+    <color name="defaultBgColor">#FFFFFF</color>
+</resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="editor_card_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--<item name="android:visibility">invisible</item>-->
+        <item name="cardCornerRadius">@dimen/editor_layout_card_radius</item>
+        <item name="cardElevation">@dimen/editor_layout_card_elevation</item>
+        <item name="android:layout_marginStart">@dimen/editor_layout_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/editor_layout_margin_horizontal</item>
+    </style>
+
+    <style name="editor_card_layout" parent="match_parent">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:padding">@dimen/editor_layout_width</item>
+    </style>
+
+    <style name="editor">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/edit_text_theme</item>
+        <item name="android:hint">@string/editor_hint</item>
+        <item name="android:imeOptions">normal|actionDone</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:text">@string/sample_text</item>
+        <item name="android:paddingStart">@dimen/editor_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/editor_padding_horizontal</item>
+        <item name="android:inputType">text|textAutoCorrect</item>
+        <item name="android:lines">1</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="editor_clear_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">@dimen/editor_clear_button</item>
+        <item name="android:src">@drawable/ic_clear</item>
+    </style>
+
+    <style name="editor_row_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?listPreferredItemHeightSmall</item>
+        <item name="android:background">@drawable/rounded_corner</item>
+        <item name="android:layout_marginEnd">10dp</item>
+    </style>
+
+    <style name="button" parent="selectable">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/buttons_padding</item>
+        <item name="android:background">@drawable/rounded_corner</item>
+    </style>
+
+    <style name="options_button" parent="button">
+        <item name="android:background">@drawable/rounded_corner_with_border</item>
+        <item name="android:layout_marginTop">@dimen/options_button_margin_horizontal</item>
+        <item name="android:layout_marginBottom">@dimen/options_button_margin_horizontal</item>
+    </style>
+</resources>

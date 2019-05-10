@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/roboto</item>
+        <item>@font/aclonica</item>
+        <item>@font/acme</item>
+        <item>@font/akronim</item>
+        <item>@font/allan</item>
+        <item>@font/allerta</item>
+        <item>@font/amiko</item>
+        <item>@font/bad_script</item>
+        <item>@font/bangers</item>
+        <item>@font/berkshire_swash</item>
+        <item>@font/bubblegum_sans</item>
+        <item>@font/butcherman</item>
+        <item>@font/butterfly_kids</item>
+        <item>@font/cedarville_cursive</item>
+        <item>@font/chango</item>
+        <item>@font/chelsea_market</item>
+        <item>@font/cherry_cream_soda</item>
+        <item>@font/coming_soon</item>
+        <item>@font/cutive</item>
+        <item>@font/montserrat</item>
+    </array>
+</resources>

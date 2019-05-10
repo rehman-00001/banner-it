@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Banner It!</string>
+    <string name="editor_hint">Your text here</string>
+    <string name="sample_text">Swipe up to begin!</string>
+    <string name="background_color">Background</string>
+    <string name="text_color">Text color</string>
+    <string name="text_style">Text style</string>
+    <string name="font_chooser_dialog_title">Select a style</string>
+    <string name="voice_to_text_hint">Say something!</string>
+    <string name="voice_to_text_not_supported">"Sorry! Your device does not support speech input"</string>
+    <string name="close_dialog">Close dialog and go back to previous screen</string>
+    <string name="app_icon_content_description">bannerit! app icon</string>
+    <string name="random">Random</string>
+    <string name="your_name">Your name</string>
+    <string name="email_helper_text">We might reply back!</string>
+    <string name="your_email">Your email</string>
+    <string name="your_feedback">Your feedback</string>
+    <string name="submit">Submit</string>
+    <string name="required_username">Username is required</string>
+    <string name="required_content">Minimum 10 characters required!</string>
+    <string name="feedback_received">Thanks a lot! Your feedback is important for us.</string>
+    <string name="default_network_error">Unable to contact server. Please try again after sometime</string>
+    <string name="connection_error">Unable to contact server. Please check your internet connection</string>
+    <string name="server_auth_failed">Server authentication failed</string>
+    <string name="connection_warning">No internet access. Please enable mobile data or Wi-Fi!</string>
+    <string name="share_this_app_text">Check out this app! https://play.google.com/store/apps/details?id=com.google.android.apps.plus</string>
+    <string name="submit_feedback">Submit feedback</string>
+    <string name="rate_this_app">Rate this app</string>
+    <string name="share_this_app">Share</string>
+    <string name="company_email">codemonk_labs@gmail.com</string>
+    <string name="app_name_and_version">Banner It! v1.0</string>
+    <string name="about">About</string>
+</resources>
