@@ -40,6 +40,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 import static com.codemonk_labs.bannerit.Constants.BG_COLOR;
+import static com.codemonk_labs.bannerit.Constants.DEFAULT_FONT_INDEX;
 import static com.codemonk_labs.bannerit.Constants.FULLSCREEN;
 import static com.codemonk_labs.bannerit.Constants.SCALE_FACTOR;
 import static com.codemonk_labs.bannerit.Constants.TEXT_COLOR;
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements FontSelectionList
     private boolean fullscreenEnabled;
     private int textColor;
     private int bgColor;
-    private int fontIndex = 0;
+    private int fontIndex = DEFAULT_FONT_INDEX;
     public static final String TAG = MainActivity.class.getSimpleName();
     public static final int REQ_CODE_SPEECH_INPUT = 100;
     private Handler handler = new Handler();
@@ -123,22 +124,7 @@ public class MainActivity extends AppCompatActivity implements FontSelectionList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         unbinder = ButterKnife.bind(this);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unbinder.unbind();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
         fontChooserDialog = new FontChooserDialog();
-        textColor = getResources().getColor(R.color.defaultTextColor);
-        bgColor = getResources().getColor(R.color.defaultBgColor);
-        displayTextView.setTextColor(textColor);
-        displayLayout.setBackgroundColor(bgColor);
         initialSize = displayTextView.getTextSize();
         editorEditText.addTextChangedListener(new EditTextWatcher());
         SGD = new ScaleGestureDetector(this, new ScaleListener());
@@ -152,6 +138,16 @@ public class MainActivity extends AppCompatActivity implements FontSelectionList
             }
         };
         getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(windowChangeListener);
+        if (savedInstanceState != null) {
+            restoreInstance(savedInstanceState);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+        Log.d(TAG, "onDestroy() called");
     }
 
     @Override
@@ -170,30 +166,33 @@ public class MainActivity extends AppCompatActivity implements FontSelectionList
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         if (savedInstanceState != null) {
-            scaleFactor = savedInstanceState.getFloat(SCALE_FACTOR, 1);
-            displayTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, savedInstanceState.getFloat(TEXT_SIZE));
-            bgColor = savedInstanceState.getInt(BG_COLOR, getResources().getColor(R.color.defaultBgColor));
-            textColor = savedInstanceState.getInt(TEXT_COLOR, getResources().getColor(R.color.defaultTextColor));
-            fontIndex = savedInstanceState.getInt(TEXT_STYLE);
-            fullscreenEnabled = savedInstanceState.getBoolean(FULLSCREEN);
-            displayLayout.setBackgroundColor(bgColor);
-            displayTextView.setTextColor(textColor);
-            displayTextView.setTypeface(ResourcesCompat.getFont(this, Fonts.of(fontIndex)));
-            if (fullscreenEnabled) {
-                fullscreenButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_corner_buttons_enabled));
-                fullscreenButton.setImageResource(R.drawable.ic_full_screen_enabled);
-                Utilities.hideSystemUI(this);
-            } else {
-                fullscreenButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_corner_with_border));
-                fullscreenButton.setImageResource(R.drawable.ic_full_screen);
-                Utilities.showSystemUI(this);
-            }
+            restoreInstance(savedInstanceState);
+        }
+    }
+
+    private void restoreInstance(Bundle savedInstanceState) {
+        scaleFactor = savedInstanceState.getFloat(SCALE_FACTOR, 1);
+        displayTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, savedInstanceState.getFloat(TEXT_SIZE));
+        bgColor = savedInstanceState.getInt(BG_COLOR, getResources().getColor(R.color.defaultBgColor));
+        textColor = savedInstanceState.getInt(TEXT_COLOR, getResources().getColor(R.color.defaultTextColor));
+        fontIndex = savedInstanceState.getInt(TEXT_STYLE);
+        fullscreenEnabled = savedInstanceState.getBoolean(FULLSCREEN);
+        displayLayout.setBackgroundColor(bgColor);
+        displayTextView.setTextColor(textColor);
+        displayTextView.setTypeface(ResourcesCompat.getFont(this, Fonts.of(fontIndex)));
+        if (fullscreenEnabled) {
+            fullscreenButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_corner_buttons_enabled));
+            fullscreenButton.setImageResource(R.drawable.ic_full_screen_enabled);
+            Utilities.hideSystemUI(this);
+        } else {
+            fullscreenButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_corner_with_border));
+            fullscreenButton.setImageResource(R.drawable.ic_full_screen);
+            Utilities.showSystemUI(this);
         }
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
         if (outState != null) {
             outState.putFloat(SCALE_FACTOR, scaleFactor);
             outState.putFloat(TEXT_SIZE, displayTextView.getTextSize());
@@ -201,6 +200,7 @@ public class MainActivity extends AppCompatActivity implements FontSelectionList
             outState.putInt(TEXT_STYLE, fontIndex);
             outState.putInt(BG_COLOR, bgColor);
             outState.putBoolean(FULLSCREEN, fullscreenEnabled);
+            super.onSaveInstanceState(outState);
         }
     }
 

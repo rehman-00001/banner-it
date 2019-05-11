@@ -23,7 +23,7 @@
     <string name="connection_error">Unable to contact server. Please check your internet connection</string>
     <string name="server_auth_failed">Server authentication failed</string>
     <string name="connection_warning">No internet access. Please enable mobile data or Wi-Fi!</string>
-    <string name="share_this_app_text">Check out this app! https://play.google.com/store/apps/details?id=com.google.android.apps.plus</string>
+    <string name="share_this_app_text">Never shout again! Use this app instead:  </string>
     <string name="submit_feedback">Submit feedback</string>
     <string name="rate_this_app">Rate this app</string>
     <string name="share_this_app">Share</string>

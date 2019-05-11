@@ -27,6 +27,8 @@ import butterknife.Unbinder;
 
 import com.crashlytics.android.Crashlytics;
 
+import static com.codemonk_labs.bannerit.Constants.PACKAGE_NAME;
+
 public class AboutAppDialog extends DialogFragment {
 
     private static final String TAG = AboutAppDialog.class.getSimpleName();
@@ -83,11 +85,11 @@ public class AboutAppDialog extends DialogFragment {
 
         try {
             startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("market://details?id=" + getContext().getPackageName())));
+                    Uri.parse("market://details?id=" + PACKAGE_NAME)));
         } catch (android.content.ActivityNotFoundException e) {
             Crashlytics.log(Log.INFO, TAG, e.getMessage());
             startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("http://play.google.com/store/apps/details?id=" + getContext().getPackageName())));
+                    Uri.parse("http://play.google.com/store/apps/details?id="+PACKAGE_NAME)));
         }
     }
 
@@ -98,7 +100,8 @@ public class AboutAppDialog extends DialogFragment {
 
     @OnClick(R.id.share_app)
     void shareApp() {
-        String shareAppText = getString(R.string.share_this_app_text);
+        String storeLink = " https://play.google.com/store/apps/details?id="+ PACKAGE_NAME;
+        String shareAppText = getString(R.string.share_this_app_text) + storeLink;
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, shareAppText);
