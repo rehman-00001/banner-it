@@ -30,4 +30,5 @@
     <string name="company_email">codemonk_labs@gmail.com</string>
     <string name="app_name_and_version">Banner It! v1.0</string>
     <string name="about">About</string>
+    <string name="auto_scroll">Auto-scroll</string>
 </resources>

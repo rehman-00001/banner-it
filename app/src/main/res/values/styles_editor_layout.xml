@@ -3,7 +3,6 @@
     <style name="editor_card_view">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <!--<item name="android:visibility">invisible</item>-->
         <item name="cardCornerRadius">@dimen/editor_layout_card_radius</item>
         <item name="cardElevation">@dimen/editor_layout_card_elevation</item>
         <item name="android:layout_marginStart">@dimen/editor_layout_margin_horizontal</item>
@@ -23,7 +22,6 @@
         <item name="android:hint">@string/editor_hint</item>
         <item name="android:imeOptions">normal|actionDone</item>
         <item name="android:singleLine">true</item>
-        <item name="android:text">@string/sample_text</item>
         <item name="android:paddingStart">@dimen/editor_padding_horizontal</item>
         <item name="android:paddingEnd">@dimen/editor_padding_horizontal</item>
         <item name="android:inputType">text|textAutoCorrect</item>

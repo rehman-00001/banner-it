@@ -9,6 +9,7 @@ public interface Constants {
     String TEXT_COLOR = "text_color";
     String BG_COLOR = "bg_color";
     String FULLSCREEN = "full_screen";
+    String AUTOSCROLL = "auto_scroll";
     String TEXT_STYLE = "text_style";
     int DEFAULT_FONT_INDEX = 0;
     int BACK_TO_FULLSCREEN_DELAY = 3000; //ms

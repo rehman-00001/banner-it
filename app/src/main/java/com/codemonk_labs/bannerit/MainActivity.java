@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.TypedValue;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -39,6 +41,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
+import static com.codemonk_labs.bannerit.Constants.AUTOSCROLL;
 import static com.codemonk_labs.bannerit.Constants.BG_COLOR;
 import static com.codemonk_labs.bannerit.Constants.DEFAULT_FONT_INDEX;
 import static com.codemonk_labs.bannerit.Constants.FULLSCREEN;
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements FontSelectionList
     @BindView(R.id.button_mic) AppCompatImageView micButton;
     @BindView(R.id.button_text_style) AppCompatImageView fontChooserButton;
     @BindView(R.id.button_about) AppCompatImageView aboutButton;
+    @BindView(R.id.auto_scroll) Switch autoScrollSwitch;
 
 
     private Unbinder unbinder;
@@ -125,7 +129,12 @@ public class MainActivity extends AppCompatActivity implements FontSelectionList
         setContentView(R.layout.activity_main);
         unbinder = ButterKnife.bind(this);
         fontChooserDialog = new FontChooserDialog();
+        textColor = getResources().getColor(R.color.defaultTextColor);
+        bgColor = getResources().getColor(R.color.defaultBgColor);
         initialSize = displayTextView.getTextSize();
+        displayTextView.setText(R.string.sample_text);
+        displayTextView.setSelected(true);
+        displayTextView.setTextColor(textColor);
         editorEditText.addTextChangedListener(new EditTextWatcher());
         SGD = new ScaleGestureDetector(this, new ScaleListener());
         swipeListener = new OnSwipeTouchListener(this) {
@@ -137,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements FontSelectionList
                 onSwipeDownAction();
             }
         };
+        autoScrollSwitch.setOnClickListener(this::handleAutoScroll);
         getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(windowChangeListener);
         if (savedInstanceState != null) {
             restoreInstance(savedInstanceState);
@@ -177,8 +187,10 @@ public class MainActivity extends AppCompatActivity implements FontSelectionList
         textColor = savedInstanceState.getInt(TEXT_COLOR, getResources().getColor(R.color.defaultTextColor));
         fontIndex = savedInstanceState.getInt(TEXT_STYLE);
         fullscreenEnabled = savedInstanceState.getBoolean(FULLSCREEN);
+        boolean isAutoScrollEnabled = savedInstanceState.getBoolean(AUTOSCROLL);
         displayLayout.setBackgroundColor(bgColor);
         displayTextView.setTextColor(textColor);
+        Log.d(TAG, "onRestore: color: "+ textColor);
         displayTextView.setTypeface(ResourcesCompat.getFont(this, Fonts.of(fontIndex)));
         if (fullscreenEnabled) {
             fullscreenButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_corner_buttons_enabled));
@@ -189,6 +201,8 @@ public class MainActivity extends AppCompatActivity implements FontSelectionList
             fullscreenButton.setImageResource(R.drawable.ic_full_screen);
             Utilities.showSystemUI(this);
         }
+        autoScrollSwitch.setChecked(isAutoScrollEnabled);
+        handleAutoScroll(null);
     }
 
     @Override
@@ -197,9 +211,11 @@ public class MainActivity extends AppCompatActivity implements FontSelectionList
             outState.putFloat(SCALE_FACTOR, scaleFactor);
             outState.putFloat(TEXT_SIZE, displayTextView.getTextSize());
             outState.putInt(TEXT_COLOR, textColor);
+            Log.d(TAG, "onSave: color: "+ textColor);
             outState.putInt(TEXT_STYLE, fontIndex);
             outState.putInt(BG_COLOR, bgColor);
             outState.putBoolean(FULLSCREEN, fullscreenEnabled);
+            outState.putBoolean(AUTOSCROLL, autoScrollSwitch.isChecked());
             super.onSaveInstanceState(outState);
         }
     }
@@ -219,6 +235,32 @@ public class MainActivity extends AppCompatActivity implements FontSelectionList
         editorLayout.setVisibility(View.INVISIBLE);
         Utilities.hideKeyboard(this);
     }
+
+    private void handleAutoScroll(View view) {
+        if (autoScrollSwitch.isChecked()) {
+            enableAutoScroll();
+        } else {
+            disableAutoScroll();
+        }
+    }
+
+    private void enableAutoScroll() {
+        displayTextView.setSingleLine(true);
+        displayTextView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        displayTextView.setMarqueeRepeatLimit(-1);
+        displayTextView.setFreezesText(true);
+        displayTextView.setFocusable(true);
+        displayTextView.setFocusableInTouchMode(true);
+        displayTextView.setSelected(true);
+    }
+
+    private void disableAutoScroll() {
+        displayTextView.setSingleLine(false);
+        displayTextView.setEllipsize(TextUtils.TruncateAt.END);
+        displayTextView.setMarqueeRepeatLimit(0);
+        displayTextView.setFreezesText(false);
+    }
+
 
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         @Override
